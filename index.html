@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="./index.css" />
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -35,10 +35,17 @@
       </nav>
       <header>
         <div class="container">
-          <div class="input__wrapper">
-            <input type="search" id="search__bar" placeholder="Search..." name="q"/>
-            <button id="search__btn"><i class="fa fa-search"></i></button>
-          </div>
+          <form action="" id="searchForm">
+            <input
+              class="search"
+              type="text"
+              id="userInput"
+              placeholder="Search..."
+            />
+            <button type="submit" id="search__btn">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
         </div>
       </header>
     </section>
