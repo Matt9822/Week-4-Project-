@@ -90,9 +90,9 @@ header {
   align-items: center;
 }
 
-.input__wrapper {
-  /* position: absolute; */
-}
+/* .input__wrapper {
+  position: absolute;
+} */
 
 .search {
   padding: 8px;
