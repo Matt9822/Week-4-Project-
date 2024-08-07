@@ -27,6 +27,11 @@ body {
   background-color: black;
 }
 
+image {
+  width: 80px;
+  height: 80px;
+}
+
 
 /*
 
@@ -117,3 +122,17 @@ header {
 input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
+
+
+/*
+
+Featured  
+
+*/
+
+
+.img__wrapper {
+  height: 80px;
+  width: 80px;
+}
+
