@@ -5,15 +5,20 @@ const API_ID = "https://www.omdbapi.com/?apikey=19c5e51c&i=";
 //The "async function" is used when you need to make a call to a API
 async function fetchMovies() {
   try {
-    //fetching the API
+    //fetching the API useing the corresponding "await" infront of the fetch. the await is used
+    //with the forementioned "async" to gain access to a promise (not the only way to do so)
+    //(A Promise is given when trying to feach a api)
     const response = await fetch(API_SEARCH + "fire");
 
-    //This "if" statement is only used if the above code throws a error
+    //The below "if" statement is only used if the above code throws a error
     if (!response.ok) {
 
       //This "if" statement is here to help myself and other develepers find where code went wrong.
       throw new Error("Network response is not ok " + response.statusText);
     }
+
+    //"await response.json" is used when turning the Backend
+    //data into a readable format for the frontend
     const data = await response.json();
 
     //Slice is used when you need to only use a certain part of an array
@@ -34,7 +39,7 @@ async function fetchMovies() {
 //The displaymovies function is used in displaying the sliced array from my API
 function displaymovies(movies) {
 
-  //movieList is used to select where in the HTML i will be adding new data from my API
+  //movieList is used to select where in my HTML i will be adding new data from my API
   const movieList = document.getElementById("movie-list");
 
   //The below code is used to wrap thru the entire array that is provided. The "movie" is provided
@@ -59,6 +64,8 @@ function displaymovies(movies) {
     poster.src = movie.Poster;
     poster.alt = `${movie.Title} poster`;
 
+    //The appendChild or aChild is to append(add to as something extra) to the given 
+    //parent node most commonly an element
     movieContainer.appendChild(title);
     movieContainer.appendChild(year);
     movieContainer.appendChild(poster);
