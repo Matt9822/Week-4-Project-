@@ -22,11 +22,11 @@ async function fetchMovies() {
     const data = await response.json();
 
     //Slice is used when you need to only use a certain part of an array
-    const firstSixMovies = data.Search.slice(0, 10);
+    const firstTenMovies = data.Search.slice(0, 10);
 
     //This is here to difine it's parameter if it was outside of this function it would not
     //be sliced when we use it in a function on line 41
-    displaymovies(firstSixMovies);
+    displayMovies(firstTenMovies);
     
     //catch any errors that occur with this function to again make debugging easier but try
     //not to overuse these as they are better for trying out your code because if a error is caught
@@ -38,7 +38,7 @@ async function fetchMovies() {
   }
 }
 //The displaymovies function is used in displaying the sliced array from my API
-async function displaymovies(movies) {
+async function displayMovies(movies) {
 
   //movieList is used to select where in my HTML i will be adding new data from my API
   const movieList = document.getElementById("movie-list");
@@ -65,7 +65,7 @@ async function displaymovies(movies) {
     //The poster.src is where the image will go the poster.alt is used when no image is displayed
     const poster = document.createElement('img');
     poster.src = movie.Poster;
-    poster.alt = `${movie.Title} poster`;
+    poster.alt = `${movie.Title} Img`;
     poster.classList.add("movie-img")
 
     //The appendChild or aChild is to append(add to as something extra) to the given 
