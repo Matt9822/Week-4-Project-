@@ -89,4 +89,4 @@ function displayMovies(movies) {
 
 }
 
-// localStorage.removeItem('searchQuery')
+localStorage.removeItem('searchQuery')

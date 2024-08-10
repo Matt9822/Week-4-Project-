@@ -24,6 +24,10 @@ a {
   text-decoration: none;
 }
 
+.no-cursor {
+  cursor: not-allowed;
+}
+
 /*
 
 NAVIGATION 
@@ -102,13 +106,17 @@ HEADER
 
 header {
   width: 100%;
-  height: 850px;
+  height: 90.69%;
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: linear-gradient(0deg, rgb(148, 54, 11), rgb(77, 1, 1) 50%, black)
+}
+
+.header-search {
+  height: 1115px;
 }
 
 .featured {
@@ -124,10 +132,8 @@ Featured
 */
 
 .movie-wrapper {
-  display: flex;
-  align-items: last baseline;
-  justify-content: center;
-  height: 100%;
+  position: relative;
+  top: 158px;
 }
 
 #movie-list {
@@ -199,4 +205,11 @@ display: none;
 display: none;
 }
 
+.hr-results {
+  top: 10px;
+}
+
+.search-results {
+  top: -20px;
+}
 

@@ -2,6 +2,9 @@ const API_SEARCH = "http://www.omdbapi.com/?apikey=19c5e51c&s=";
 
 const API_ID = "https://www.omdbapi.com/?apikey=19c5e51c&i=";
 
+
+//collecting userInput and calling featured movies
+
 document
   .getElementById("searchForm")
   .addEventListener("submit", async function (event) {
@@ -94,3 +97,19 @@ async function displayMovies(movies) {
 }
 
 fetchMovies("fire");
+
+
+//FEATURED MOVIES ANIMATION
+
+const scrollers = document.querySelectorAll(".scroller")
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
+
+function addAnimation() {
+  scrollers.forEach(scroller => {
+    scroller.setAttribute("data-animation", true)
+  })
+}
+
