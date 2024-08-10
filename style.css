@@ -1,7 +1,5 @@
 * {
   margin: 0;
-  padding: 0;
-  max-width: 100%;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
@@ -20,6 +18,10 @@ hr {
   border-color: #f19f7f;
   width: 60%;
   top: 250px;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*
@@ -41,8 +43,15 @@ NAVIGATION
 
 .nav-heading {
   font-size: 32px;
-  padding-left: 12px;
+  margin-left: 20px;
   color: #fff;
+  transition: all 300ms ease;
+}
+
+.nav-search--heading:hover {
+  color: rgb(168, 53, 0);
+  transition: all 300ms ease;
+  cursor: pointer;
 }
 
 .nav-img {
@@ -93,7 +102,7 @@ HEADER
 
 header {
   width: 100%;
-  height: 1115px;
+  height: 850px;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -115,9 +124,8 @@ Featured
 */
 
 .movie-wrapper {
-  position: relative;
   display: flex;
-  align-items: center;
+  align-items: last baseline;
   justify-content: center;
   height: 100%;
 }
@@ -127,25 +135,68 @@ Featured
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 90px;
   max-width: 100%;
   z-index: 1;
-  overflow: hidden;
 }
 
 .movie {
   padding: 0px 60px 0px 60px;
   z-index: 1;
+  transition: all 500ms ease;
 }
 
 .movie-title {
   display: flex;
   flex-wrap: wrap;
   width:300px;
+  display: none;
+}
+
+.movie-year {
+  display: none;
 }
 
 .movie-img {
+  position: relative;
   height: 442px;
-  width: 295.97px;
+  width: 280px;
+  transition: all 500ms ease;
+}
+
+.movie-img:hover  {
+  transform: scale(1.1);
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+
+/*
+
+Search
+
+*/
+
+.movie-search--list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.movie-search {
+  padding: 20px 60px 20px 60px;
+}
+
+.movie-search--title {
+display: none;
+}
+
+.movie-search--year {
+display: none;
 }
 
 

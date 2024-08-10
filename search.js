@@ -2,28 +2,26 @@ const API_SEARCH = "http://www.omdbapi.com/?apikey=19c5e51c&s=";
 
 const API_ID = "https://www.omdbapi.com/?apikey=19c5e51c&i=";
 
-function getSearchParam(param) {
+document.getElementById("searchForm").addEventListener('submit', async function(event) {
 
-    //The new operator lets developers create an instance of a user-defined object 
-    //type or of one of the built-in object types that has a constructor function...
+    //Prevents the form from simply refreshing the page
+    event.preventDefault();
 
-    //The URLSearchParams interface defines utility methods to work with the 
-    //query string of a URL.
-    const urlParams = new URLSearchParams(window.location.search);
+    const userInput = document.getElementById("userInput").value;
 
-    //The get syntax binds an object property to a function that will be called 
-    //when that property is looked up. It can also be used in classes.
-    return urlParams.get(param);
-}
+    if (userInput.trim() !== ''){
+        await fetchMovies(userInput);
+        document.getElementById('userInput').value = "";
+    }
+});
 
-//Fetch the search query from the URL
-const query = getSearchParam('search');
+const query = localStorage.getItem('searchQuery')
 
-
-//This is here to check if there is a search query in the URL if there is one 
-//it calls fetchMovies with the parameter of search
+//if there is a stored element in query then it will pass it to fetchMovies
 if (query) {
-    fetchMovies(query);
+
+    fetchMovies(query)
+
 }
 
 async function fetchMovies(query) {   
@@ -48,8 +46,8 @@ async function fetchMovies(query) {
         const response = await fetch(apiURL);
         const data = await response.json();
 
-        const firstSixMovies = data.search.slice(0, 6);
-        displayMovies(firstSixMovies);
+        const firstEightMovies = data.Search.slice(0, 8);
+        displayMovies(firstEightMovies);
 
     } catch {
 
@@ -61,25 +59,26 @@ async function fetchMovies(query) {
 function displayMovies(movies) {
 
    const movieList = document.getElementById("movie-list");
+   movieList.classList.add('movie-search--list')
    movieList.innerHTML = '';
 
    movies.forEach(movie => {
 
     const movieContainer = document.createElement('div')
-    movieContainer.classList.add('movie')
+    movieContainer.classList.add('movie', 'movie-search')
 
     const title = document.createElement('h2')
-    title.classList.add('movie-title')
+    title.classList.add('movie-title', 'movie-search--title')
     title.textContent = movie.Title
 
     const year = document.createElement('p')
-    year.classList.add('movie-year')
+    year.classList.add('movie-year','movie-search--year')
     year.textContent = `Year ${movie.Year}`
 
     const poster = document.createElement('img')
     poster.src = movie.Poster
     poster.alt = `${movie.Title} Img`
-    poster.classList.add('movie-img')
+    poster.classList.add('movie-img','movie-search--img')
 
     movieContainer.appendChild(title)
     movieContainer.appendChild(year)
@@ -89,3 +88,5 @@ function displayMovies(movies) {
    })
 
 }
+
+// localStorage.removeItem('searchQuery')
