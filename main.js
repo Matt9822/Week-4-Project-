@@ -94,6 +94,8 @@ async function displayMovies(movies) {
 
     movieList.appendChild(movieContainer);
   });
+
+  
 }
 
 fetchMovies("fire");
@@ -108,8 +110,16 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 }
 
 function addAnimation() {
-  scrollers.forEach(scroller => {
-    scroller.setAttribute("data-animation", true)
+  scrollers.forEach((scroller) => {
+    scroller.setAttribute("data-animated", true)
+
+    const scrollerInner = document.getElementById("movie-list")
+    const scrollerContent = Array.from(scrollerInner.children)
+    console.log(scrollerContent)
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      console.log(duplicatedItem)
+    })
   })
 }
 

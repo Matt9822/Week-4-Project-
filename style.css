@@ -34,7 +34,6 @@ NAVIGATION
 
 */
 
-
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -112,7 +111,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(0deg, rgb(148, 54, 11), rgb(77, 1, 1) 50%, black)
+  background: linear-gradient(0deg, rgb(148, 54, 11), rgb(77, 1, 1) 70%, black);
 }
 
 .header-search {
@@ -133,7 +132,7 @@ Featured
 
 .movie-wrapper {
   position: relative;
-  top: 158px;
+  top: 140px;
 }
 
 #movie-list {
@@ -141,8 +140,9 @@ Featured
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 90px;
+  
   max-width: 100%;
+  max-height: 90%;
   z-index: 1;
 }
 
@@ -155,7 +155,7 @@ Featured
 .movie-title {
   display: flex;
   flex-wrap: wrap;
-  width:300px;
+  width: 300px;
   display: none;
 }
 
@@ -170,12 +170,11 @@ Featured
   transition: all 500ms ease;
 }
 
-.movie-img:hover  {
+.movie-img:hover {
   transform: scale(1.1);
   transition: all 500ms ease;
   cursor: pointer;
 }
-
 
 /*
 
@@ -198,11 +197,11 @@ Search
 }
 
 .movie-search--title {
-display: none;
+  display: none;
 }
 
 .movie-search--year {
-display: none;
+  display: none;
 }
 
 .hr-results {
@@ -213,3 +212,89 @@ display: none;
   top: -20px;
 }
 
+/*
+
+SCROLLER
+
+*/
+
+.scroller {
+  max-width: 1500px;
+  padding: 50px, 0, 50px, 0;
+}
+
+.scroller-inner {
+  display: flex;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+
+  mask: linear-gradient(
+  90deg, 
+  transparent, 
+  white 20%, 
+  white 80%, 
+  transparent);
+  padding-top: 50px;
+}
+
+.scroller[data-animated="true"] .scroller-inner {
+  flex-wrap: nowrap;
+  animation: scroll 50s linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(0%);
+  }
+}
+
+/*
+
+@MEDIA
+
+*/
+
+@media (max-width: 1616px) {
+  .header-search {
+    height: 1550px;
+    background: linear-gradient(
+      0deg,
+      rgb(148, 54, 11),
+      rgb(77, 1, 1) 85%,
+      black
+    );
+  }
+}
+
+@media (max-width: 1216px) {
+  .header-search {
+    height: 2050px;
+    background: linear-gradient(
+      0deg,
+      rgb(148, 54, 11),
+      rgb(77, 1, 1) 89%,
+      black
+    );
+  }
+}
+
+@media (max-width: 816px) {
+  .header-search {
+    height: 4100px;
+    background: linear-gradient(
+      0deg,
+      rgb(148, 54, 11),
+      rgb(77, 1, 1) 92%,
+      black
+    );
+  }
+}
