@@ -135,4 +135,7 @@ document.body.classList += " modal-open"
 
 const movieImg = document.getElementById("movie-modal--img")
 movieImg.src = data.Poster
+
+const movieTitle = document.querySelector(".modal-title")
+movieTitle.innerHTML = `${data.Title}`
 }
