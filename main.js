@@ -72,31 +72,14 @@ async function displayMovies(movies) {
     const movieContainer = document.createElement("div");
     movieContainer.classList.add("movie");
     
-    //title is makeing a h2.  'textContent' is making the following text in the h2,
-    //which it is getting from the API using 'movie.title'
-    // const title = document.createElement("h2");
-    // title.textContent = movie.Title;
-    // title.classList.add("movie-title");
-    
-    //The "Year" in the text will display as "Year: 2020" or whatever the year is for that movie
-    // const year = document.createElement("p");
-    // year.textContent = `Year: ${movie.Year}`;
-    // year.classList.add("movie-year");
-    
     //The poster.src is where the image will go the poster.alt is used when no image is displayed
     const poster = document.createElement("img");
     poster.src = movie.Poster;
     poster.alt = `${movie.Title} Img`;
     poster.classList.add("movie-img");
-
-    // const imbdid = document.createElement("p")
-    // imbdid.textContent = `${movie.imbdID}`
-    // imbdid.classList.add("movie-imbdid")
     
     //The appendChild or aChild is to append(add to as something extra) to the given
     //parent node most commonly an element
-    // movieContainer.appendChild(title);
-    // movieContainer.appendChild(year);
     movieContainer.appendChild(poster);
     
     movieList.appendChild(movieContainer);
@@ -113,6 +96,7 @@ async function displayMovies(movies) {
       } catch {
         console.log("error")
       }
+      toggleModal()
     }
   });
   
@@ -120,22 +104,45 @@ async function displayMovies(movies) {
 }
 
 //FEATURED MOVIES ANIMATION
+function toggleModal() {
+  if (isModalOpen) {
+  
+    isModalOpen = false;
+    return document.body.classList.remove("modal-open")
+  }
+  isModalOpen = true
+  document.body.classList += " modal-open"
+}
 
 function moviedetails(data) {
 
   //in the ( ) of a if function the code will always read "if (statement) is == to true then{}"
   //unless stated by you otherwise e.g. if (statment !== true) is not equal to true then{}
-  if (isModalOpen) {
-
-    isModalOpen = false;
-    return document.body.classList.remove("modal-open")
-}
-isModalOpen = true
-document.body.classList += " modal-open"
 
 const movieImg = document.getElementById("movie-modal--img")
 movieImg.src = data.Poster
 
 const movieTitle = document.querySelector(".modal-title")
 movieTitle.innerHTML = `${data.Title}`
+
+const movieYear = document.querySelector(".modal-year")
+movieYear.innerHTML = `<span class="movie-info--span">Year:</span>  ${data.Year}`
+
+const movieRated = document.querySelector(".modal-rated")
+movieRated.innerHTML = `<span class="movie-info--span">Rated:</span>  ${data.Rated}`
+
+const movieReleased = document.querySelector(".modal-released")
+movieReleased.innerHTML = `<span class="movie-info--span">Released:</span>  ${data.Released}`
+
+const movieRuntime = document.querySelector(".modal-runtime")
+movieRuntime.innerHTML = `<span class="movie-info--span">Runtime:</span>  ${data.Runtime}`
+
+const movieGenre = document.querySelector(".modal-genre")
+movieGenre.innerHTML = `<span class="movie-info--span">Genre:</span>  ${data.Genre}`
+
+const moviePlot = document.querySelector(".modal-plot")
+moviePlot.innerHTML = `<span class="movie-info--span">Plot:</span>  ${data.Plot}`
+
+const movieRating = document.querySelector(".modal-rating")
+movieRating.innerHTML = `<span class="movie-info--span">IMDB Rating:</span> ${data.imdbRating}`
 }

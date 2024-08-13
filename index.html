@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://kit.fontawesome.com/2eaf2e3475.js" crossorigin="anonymous"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -57,15 +58,16 @@
           <img src="" alt="" id="movie-modal--img">
         </div>
         <div class="modal-half modal-half--info">
+          <i class="fas fa-times modal-exit click" onclick="toggleModal()"></i>
           <h2 class="modal-title"></h2>
-          <p class="modal-year">Year:</p>
-          <p class="modal-rated">Rated:</p>
-          <p class="modal-released">Released:</p>
-          <p class="modal-runtime">Runtime:</p>
-          <p class="modal-genre">Genre:</p>
-          <p class="modal-plot">Plot:</p>
-          <h3 class="modal-rating">IMDB Rating:</h3>
-          <button class="modal-play--btn">Play</button>
+          <div class=""><p class="modal-year">Year:</p></div>
+          <div class=""><p class="modal-rated">Rated:</p></div>
+          <div class=""><p class="modal-released">Released:</p></div>
+          <div class=""><p class="modal-runtime">Runtime:</p></div>
+          <div class=""><p class="modal-genre">Genre:</p></div>
+          <div class=""><p class="modal-plot">Plot:</p></div>
+          <div class=""><p class="modal-rating">IMDB</p></div>
+          <button class="modal-play--btn" onclick="toggleModal()"><span></span>Play</button>
         </div>
       </div>
     </section>

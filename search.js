@@ -1,4 +1,7 @@
 
+
+let isModalOpen = false;
+
 document.getElementById("searchForm").addEventListener('submit', async function(event) {
 
     //Prevents the form from simply refreshing the page
@@ -64,26 +67,69 @@ function displaySearch(movies) {
     const movieContainer = document.createElement('div')
     movieContainer.classList.add('movie', 'movie-search')
 
-    const title = document.createElement('h2')
-    title.classList.add('movie-title', 'movie-search--title')
-    title.textContent = movie.Title
-
-    const year = document.createElement('p')
-    year.classList.add('movie-year','movie-search--year')
-    year.textContent = `Year ${movie.Year}`
-
     const poster = document.createElement('img')
     poster.src = movie.Poster
     poster.alt = `${movie.Title} Img`
     poster.classList.add('movie-img','movie-search--img')
 
-    movieContainer.appendChild(title)
-    movieContainer.appendChild(year)
     movieContainer.appendChild(poster)
 
     movieList.appendChild(movieContainer)
+
+    movieContainer.onclick = async function() {
+        
+          let apiID = `https://www.omdbapi.com/?apikey=19c5e51c&i=${movie.imdbID}`
+          let response = await fetch(apiID);
+          let data = await response.json()
+          
+          if (data !== "") {
+            movieDetails(data)
+          } 
+         
+        toggleModal()
+      }
    })
 
 }
+
+function toggleModal() {
+    if (isModalOpen) {
+    
+      isModalOpen = false;
+      return document.body.classList.remove("modal-open")
+    }
+    isModalOpen = true
+    document.body.classList += " modal-open"
+  }
+
+  function movieDetails(data) {
+  
+  const movieImg = document.getElementById("movie-modal--img")
+  movieImg.src = data.Poster
+  
+  const movieTitle = document.querySelector(".modal-title")
+  movieTitle.innerHTML = `${data.Title}`
+  
+  const movieYear = document.querySelector(".modal-year")
+  movieYear.innerHTML = `<span class="movie-info--span">Year:</span>  ${data.Year}`
+  
+  const movieRated = document.querySelector(".modal-rated")
+  movieRated.innerHTML = `<span class="movie-info--span">Rated:</span>  ${data.Rated}`
+  
+  const movieReleased = document.querySelector(".modal-released")
+  movieReleased.innerHTML = `<span class="movie-info--span">Released:</span>  ${data.Released}`
+  
+  const movieRuntime = document.querySelector(".modal-runtime")
+  movieRuntime.innerHTML = `<span class="movie-info--span">Runtime:</span>  ${data.Runtime}`
+  
+  const movieGenre = document.querySelector(".modal-genre")
+  movieGenre.innerHTML = `<span class="movie-info--span">Genre:</span>  ${data.Genre}`
+  
+  const moviePlot = document.querySelector(".modal-plot")
+  moviePlot.innerHTML = `<span class="movie-info--span">Plot:</span>  ${data.Plot}`
+  
+  const movieRating = document.querySelector(".modal-rating")
+  movieRating.innerHTML = `<span class="movie-info--span">IMDB Rating:</span> ${data.imdbRating}`
+  }
 
 localStorage.removeItem('searchQuery')
