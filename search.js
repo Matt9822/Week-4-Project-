@@ -7,21 +7,21 @@ document.getElementById("searchForm").addEventListener('submit', async function(
     const userInput = document.getElementById("userInput").value;
 
     if (userInput.trim() !== ''){
-        await fetchMovies(userInput);
+        await fetchSearch(userInput);
         document.getElementById('userInput').value = "";
     }
 });
 
 const query = localStorage.getItem('searchQuery')
 
-//if there is a stored element in query then it will pass it to fetchMovies
+//if there is a stored element in query then it will pass it to fetchSearch
 if (query) {
 
-    fetchMovies(query)
+    fetchSearch(query)
 
 }
 
-async function fetchMovies(query) {   
+async function fetchSearch(query) {   
     
     //The encodeURICmponent ensures that when the user searchs useing spaces
     //and/or any special characters such as "&" that would mess up accessing the
@@ -44,7 +44,7 @@ async function fetchMovies(query) {
         const data = await response.json();
 
         const firstEightMovies = data.Search.slice(0, 8);
-        displayMovies(firstEightMovies);
+        displaySearch(firstEightMovies);
 
     } catch {
 
@@ -53,7 +53,7 @@ async function fetchMovies(query) {
     }
 }
 
-function displayMovies(movies) {
+function displaySearch(movies) {
 
    const movieList = document.getElementById("movie-list");
    movieList.classList.add('movie-search--list')
