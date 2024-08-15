@@ -45,11 +45,15 @@ document
     
     //Slice is used when you need to only use a certain part of an array
     const firstTenMovies = data.Search.slice(0, 10);
+
     
     //This is here to difine it's parameter if it was outside of this function it would not
     //be sliced when we use it in a function on line 41
     displayMovies(firstTenMovies);
     
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      addAnimation();
+    }
     //catch any errors that occur with this function to again make debugging easier but try
     //not to overuse these as they are better for trying out your code because if a error is caught
     //the code will STOP here so even if it is
@@ -71,6 +75,8 @@ async function displayMovies(movies) {
     //movieContainer is being used to creat a div and add a class to the div
     const movieContainer = document.createElement("div");
     movieContainer.classList.add("movie");
+
+    movieContainer.dataset.imdbid = movie.imdbID;
     
     //The poster.src is where the image will go the poster.alt is used when no image is displayed
     const poster = document.createElement("img");
@@ -99,11 +105,49 @@ async function displayMovies(movies) {
       toggleModal()
     }
   });
-  
+
+  // if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  //   addAnimation();
+  // }
   
 }
+// SIDE SCROLLER
+const scrollers = document.querySelectorAll(".scroller")
 
-//FEATURED MOVIES ANIMATION
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    scroller.setAttribute("data-animated", true)
+
+    const scrollerInner = document.getElementById("movie-list")
+    const scrollerContent = Array.from(scrollerInner.children)
+    console.log(scrollerContent)
+
+    scrollerContent.forEach((item) => {
+
+      const duplicatedItem = item.cloneNode(true);
+      scrollerInner.appendChild(duplicatedItem)
+      console.log(duplicatedItem)
+
+      duplicatedItem.onclick = async function() {
+        try {
+          const apiID = `https://www.omdbapi.com/?apikey=19c5e51c&i=${duplicatedItem.dataset.imdbid}`
+          const response = await fetch(apiID);
+          const data = await response.json()
+      
+          if (data !== "") {
+            moviedetails(data)
+          }
+        } catch {
+          console.log("error")
+        }
+        toggleModal()
+      }
+      
+    })
+  })
+}
+
+//MODAL
 function toggleModal() {
   if (isModalOpen) {
   

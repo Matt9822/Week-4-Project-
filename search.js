@@ -77,20 +77,25 @@ function displaySearch(movies) {
     movieList.appendChild(movieContainer)
 
     movieContainer.onclick = async function() {
-        
-          let apiID = `https://www.omdbapi.com/?apikey=19c5e51c&i=${movie.imdbID}`
-          let response = await fetch(apiID);
-          let data = await response.json()
+      
+        try {
+          const apiID = `https://www.omdbapi.com/?apikey=19c5e51c&i=${movie.imdbID}`
+          const Response = await fetch(apiID);
+          const data = await Response.json()
           
           if (data !== "") {
             movieDetails(data)
-          } 
-         
+          }
+        } catch {
+          console.log("error2")
+        }
         toggleModal()
-      }
-   })
-
+      
+    }
+  })
+  
 }
+
 
 function toggleModal() {
     if (isModalOpen) {
