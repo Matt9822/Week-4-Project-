@@ -120,13 +120,12 @@ function addAnimation() {
 
     const scrollerInner = document.getElementById("movie-list")
     const scrollerContent = Array.from(scrollerInner.children)
-    console.log(scrollerContent)
 
     scrollerContent.forEach((item) => {
 
       const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute('aria-hidden', true)
       scrollerInner.appendChild(duplicatedItem)
-      console.log(duplicatedItem)
 
       duplicatedItem.onclick = async function() {
         try {
