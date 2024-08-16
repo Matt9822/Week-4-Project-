@@ -21,6 +21,11 @@ hr {
   top: 250px;
 }
 
+.breaker {
+  display: flex;
+  justify-content: center;
+}
+
 ul {
   text-decoration: none;
   list-style-type: none;
@@ -34,6 +39,10 @@ li {
 a {
   text-decoration: none;
   list-style-type: none;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .no-cursor {
@@ -442,6 +451,29 @@ MOVIE MODAL
       margin-bottom: 5px;
     }
   }
+/* 
+  
+SPINNER 
+  
+*/
+
+.fa-spinner {
+  position: absolute;
+  z-index: 100;
+  top: 35%;
+  color: white;
+  font-size: 120px;
+  animation: spinner 800ms infinite linear;
+}
+
+@keyframes spinner {
+  0% {
+      transform: rotate(0);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
 
 /*
 
@@ -506,6 +538,14 @@ MOVIE MODAL
 
   .nav-search--heading {
     margin-left: 0;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  #filterOptions {
+    margin-bottom: 15px;
   }
 
 }

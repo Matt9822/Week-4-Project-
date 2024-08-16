@@ -19,10 +19,22 @@ document
   
   if (userInput !== "") {
       localStorage.setItem('searchQuery', userInput);
-      window.location.href = 'search.html';
+      setTimeout(() => {
+        window.location.href = 'search.html'
+      }, 3000)
+
+      // SPINNER
+      const hidden = document.querySelectorAll (".movie-wrapper, .nav-heading, .breaker, .footer-row")
+      const spinner = document.getElementById("Spinner")
+      spinner.classList.remove("hidden")
+      hidden.forEach((element)=>{
+
+        element.classList.add("hidden")
+
+      })
     }
   });
-  
+
   //The "async function" is used when you need to make a call to a API
   async function fetchMovies() {
     try {

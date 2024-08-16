@@ -30,7 +30,7 @@
               alt=""
               class="nav-img"
             />
-            <h1 class="nav-heading">Fire Movies</h1>
+            <h1 id="nav-h1" class="nav-heading">Fire Movies</h1>
           </div>
           <div class="container">
             <form action="search.html" id="searchForm">
@@ -49,9 +49,12 @@
         </div>
       </nav>
       <header>
-        <h2 class="featured">Featured</h2>
-        <hr />
-        <div class="movie-wrapper scroller">
+        <i id="Spinner" class="fas fa-spinner hidden"></i>
+        <div id="breakers" class="breaker">
+          <h2 class="featured">Featured</h2>
+          <hr />
+        </div>
+        <div id="Movie" class="movie-wrapper scroller">
           <div id="movie-list" class="scroller-inner"></div>
         </div>
       </header>
@@ -82,7 +85,7 @@
       </div>
     </section>
     <footer>
-      <div class="footer-row">
+      <div id="Footer-elem" class="footer-row">
         <div class="footer-body">
           <div class="footer-body--list">
             <li class="footer-li">

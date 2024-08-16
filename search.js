@@ -24,6 +24,8 @@ if (query) {
 
 }
 
+let allFetchedMovies = [];
+
 async function fetchSearch(query) {   
     
     //The encodeURICmponent ensures that when the user searchs useing spaces
@@ -47,6 +49,7 @@ async function fetchSearch(query) {
         const data = await response.json();
 
         const firstEightMovies = data.Search.slice(0, 8);
+        allFetchedMovies = firstEightMovies
         displaySearch(firstEightMovies);
 
     } catch {
@@ -54,6 +57,32 @@ async function fetchSearch(query) {
         console.error('error fetching search data', error);
 
     }
+}
+
+// FILTER
+
+document.getElementById("filterOptions").addEventListener("change", function() {
+  const filterOption = this.value;
+  applyFilters(allFetchedMovies, filterOption)
+})
+
+function applyFilters(movies, filterOption) {
+  
+  //The "..." syntax is used here to make a copy of the movies array so that we can
+  //change the data in the copy and not the original array
+  let sortedMovies = [...movies]
+
+  if (filterOption === 'year-high-low') {
+    sortedMovies = movies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year))
+  } else if (filterOption === 'year-low-high') {
+    sortedMovies = movies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year))
+  } else if (filterOption === 'a-z') {
+    sortedMovies = movies.sort((a,b) => a.Title.localeCompare(b.Title))
+  } else if (filterOption === 'z-a') {
+    sortedMovies = movies.sort((a,b) => b.Title.localeCompare(a.Title))
+  } 
+
+  displaySearch(sortedMovies)
 }
 
 function displaySearch(movies) {
@@ -73,7 +102,6 @@ function displaySearch(movies) {
     poster.classList.add('movie-img','movie-search--img')
 
     movieContainer.appendChild(poster)
-
     movieList.appendChild(movieContainer)
 
     movieContainer.onclick = async function() {
@@ -137,4 +165,4 @@ function toggleModal() {
   movieRating.innerHTML = `<span class="movie-info--span">IMDB Rating:</span> ${data.imdbRating}`
   }
 
-localStorage.removeItem('searchQuery')
+// localStorage.removeItem('searchQuery')
