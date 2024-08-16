@@ -4,6 +4,7 @@ const API_ID = "https://www.omdbapi.com/?apikey=19c5e51c&i=";
 
 let isModalOpen = false;
 
+
 fetchMovies("fire");
 
 //collecting userInput and calling featured movies
@@ -202,3 +203,8 @@ moviePlot.innerHTML = `<span class="movie-info--span">Plot:</span>  ${data.Plot}
 const movieRating = document.querySelector(".modal-rating")
 movieRating.innerHTML = `<span class="movie-info--span">IMDB Rating:</span> ${data.imdbRating}`
 }
+
+removehidden = document.querySelectorAll (".movie-wrapper, .nav-heading, .breaker, .footer-row")
+removehidden.classList.remove("hidden")
+addhidden = document.getElementById("Spinner")
+addhidden.classList.add("hidden")
