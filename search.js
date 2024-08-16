@@ -133,7 +133,7 @@ function toggleModal() {
     }
     isModalOpen = true
     document.body.classList += " modal-open"
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   function movieDetails(data) {
