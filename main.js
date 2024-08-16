@@ -36,13 +36,13 @@ document
   });
 
   //The "async function" is used when you need to make a call to a API
-  async function fetchMovies() {
+  async function fetchMovies(searchTerm = "fire") {
     try {
 
     //fetching the API useing the corresponding "await" infront of the fetch. the await is used
     //with the forementioned "async" to gain access to a promise (not the only way to do so)
     //(A Promise is given when trying to feach a api)
-    const response = await fetch(API_SEARCH + `fire`);
+    const response = await fetch(API_SEARCH + searchTerm);
     
     //The below "if" statement is only used if the above code throws a error
     if (!response.ok) {
@@ -160,6 +160,9 @@ function addAnimation() {
 
 //MODAL
 function toggleModal() {
+
+  //in the ( ) of a if function the code will always read "if (statement) is == to true then{}"
+  //unless stated by you otherwise e.g. if (statment !== true) is not equal to true then{}
   if (isModalOpen) {
   
     isModalOpen = false;
@@ -171,8 +174,6 @@ function toggleModal() {
 
 function moviedetails(data) {
 
-  //in the ( ) of a if function the code will always read "if (statement) is == to true then{}"
-  //unless stated by you otherwise e.g. if (statment !== true) is not equal to true then{}
 
 const movieImg = document.getElementById("movie-modal--img")
 movieImg.src = data.Poster

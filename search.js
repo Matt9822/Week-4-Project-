@@ -33,10 +33,10 @@ async function fetchSearch(query) {
     //URL as they are used in URL's and therefore would mess up the search
     //for example if the searched used was "Harry Potter & The Goblet of Fire" 
     //the URL would look like this
-    //"http://www.omdbapi.com/?apikey=19c5e51c&s=Harry Potter & The Goblet of Fire"
+    //"https://www.omdbapi.com/?apikey=19c5e51c&s=Harry Potter & The Goblet of Fire"
     //the url would treat it as "Harry Potter" and "The Goblet of Fire"
     //this will also help against any malice intentions the user might have  
-    const apiURL = `http://www.omdbapi.com/?apikey=19c5e51c&s=${encodeURIComponent(query)}`;
+    const apiURL = `https://www.omdbapi.com/?apikey=19c5e51c&s=${encodeURIComponent(query)}`;
 
     //This try and catch statement are only here if there is some sort of failure in fetching the API
     //and if there is a failure it will stop all code after it..
