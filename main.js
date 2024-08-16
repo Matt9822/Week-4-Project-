@@ -204,7 +204,14 @@ const movieRating = document.querySelector(".modal-rating")
 movieRating.innerHTML = `<span class="movie-info--span">IMDB Rating:</span> ${data.imdbRating}`
 }
 
+refresh()
+
+function refresh(){
 removehidden = document.querySelectorAll (".movie-wrapper, .nav-heading, .breaker, .footer-row")
-removehidden.classList.remove("hidden")
+removehidden.forEach((element)=>{
+
+  element.classList.remove("hidden")
+
+})
 addhidden = document.getElementById("Spinner")
-addhidden.classList.add("hidden")
+addhidden.classList.add("hidden")}
