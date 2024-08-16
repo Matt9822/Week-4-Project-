@@ -1,4 +1,4 @@
-const API_SEARCH = "http://www.omdbapi.com/?apikey=19c5e51c&s=";
+const API_SEARCH = "https://www.omdbapi.com/?apikey=19c5e51c&s=";
 
 const API_ID = "https://www.omdbapi.com/?apikey=19c5e51c&i=";
 
